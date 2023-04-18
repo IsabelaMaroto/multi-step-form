@@ -1,0 +1,9 @@
+form {
+  padding: 10px 0;
+}
+
+.boxInput {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0;
+}/*# sourceMappingURL=step1.css.map */
