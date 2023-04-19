@@ -58,14 +58,41 @@ export default function HorizontalLinearStepper() {
       <Box
         sx={{
           position: "absolute",
-          top: "7%",
+          top: "3%",
           left: "50%",
-          transform: "translate(-50%, -7%)",
+          transform: "translate(-50%, -3%)",
         }}
       >
-        <Stepper activeStep={activeStep}>
+        <Stepper
+          activeStep={activeStep}
+          sx={{
+            height: "60px",
+            div: {
+              paddingRight: "unset",
+            },
+
+            svg: {
+              color: "rgba(0, 0, 0, 0)",
+              border: "2px solid hsl(0, 0%, 100%)",
+              borderRadius: "50%",
+              fontSize: "2rem",
+            },
+            ".css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active": {
+              color: "hsl(228, 100%, 84%)",
+              border: "unset",
+
+              ".css-117w1su-MuiStepIcon-text": {
+                fill: "hsl(0, 0%, 0%)",
+              },
+            },
+            ".css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed": {
+              path: {},
+            },
+          }}
+          connector={false}
+        >
           {steps.map((label, index) => {
-            const stepProps = {};
+            const stepProps = { completed: false };
             const labelProps = {};
             if (isStepOptional(index)) {
               labelProps.optional = (
@@ -99,9 +126,9 @@ export default function HorizontalLinearStepper() {
           <Box
             sx={{
               position: "absolute",
-              top: "27%",
+              top: "36%",
               left: "50%",
-              transform: "translate(-50%, -27%)",
+              transform: "translate(-50%, -36%)",
               backgroundColor: "white",
               width: "90%",
               borderRadius: "10px",
@@ -124,11 +151,19 @@ export default function HorizontalLinearStepper() {
               position: "absolute",
               bottom: "0%",
               width: "100%",
-              padding: '20px',
+              padding: "20px",
             }}
           >
             {activeStep != 0 ? (
-              <Button color="inherit" onClick={handleBack} sx={{ mr: 1 }}>
+              <Button
+                color="inherit"
+                onClick={handleBack}
+                sx={{
+                  mr: 1,
+                  textTransform: "capitalize",
+                  color: "hsl(231, 11%, 63%)",
+                }}
+              >
                 Go Back
               </Button>
             ) : null}
@@ -140,7 +175,14 @@ export default function HorizontalLinearStepper() {
               </Button>
             )}
 
-            <Button onClick={handleNext}>
+            <Button
+              onClick={handleNext}
+             sx={{
+                backgroundColor: `${activeStep === steps.length - 1 ? "hsl(243, 100%, 62%) !important" : "hsl(213, 96%, 18%) !important"}` ,
+                color: "hsl(0, 0%, 100%)", 
+                textTransform: "capitalize",
+              }} 
+            >
               {activeStep === steps.length - 1 ? "Confirm" : "Next Step"}
             </Button>
           </Box>

@@ -1,9 +1,11 @@
-form {
+.container h2 {
+  padding: 0 0 5px;
+}
+.container form {
   padding: 10px 0;
 }
-
-.boxInput {
+.container .boxInput {
   display: flex;
   flex-direction: column;
-  padding: 5px 0;
+  padding: 8px 0;
 }/*# sourceMappingURL=step1.css.map */
