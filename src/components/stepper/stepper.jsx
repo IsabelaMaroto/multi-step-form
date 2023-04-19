@@ -6,6 +6,7 @@ import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Step1 } from "../step1/step1";
+import { Step2 } from "../step2/step2";
 
 const steps = ["Your info", "Select plan", " Add-ons", "Summary"];
 
@@ -124,30 +125,20 @@ export default function HorizontalLinearStepper() {
       ) : (
         <React.Fragment>
           <Box
-            sx={{
-              position: "absolute",
-              top: "36%",
-              left: "50%",
-              transform: "translate(-50%, -36%)",
-              backgroundColor: "white",
-              width: "90%",
-              borderRadius: "10px",
-              padding: "20px",
-            }}
+           
           >
-            {activeStep === 0 ? (
-              <Step1 />
-            ) : (
-              <Typography sx={{ mt: 2, mb: 1 }}>
-                Step {activeStep + 1}
-              </Typography>
-            )}
+            {activeStep === 0 && 
+              <Step1 />}
+            {activeStep === 1 && 
+              <Step2/>
+            
+            }
           </Box>
           <Box
             sx={{
               display: "flex",
               flexDirection: "row",
-              backgroundColor: "white",
+              backgroundColor: "hsl(0, 0%, 100%)",
               position: "absolute",
               bottom: "0%",
               width: "100%",

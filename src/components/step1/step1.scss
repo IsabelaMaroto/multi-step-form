@@ -1,4 +1,14 @@
 .container {
+
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%, -34%);
+    background-color: hsl(0, 0%, 100%);
+    width: 90%;
+    border-radius: 10px;
+    padding: 20px;
+
     h2 {
         padding: 0 0 5px;
     }

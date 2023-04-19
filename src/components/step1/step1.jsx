@@ -21,7 +21,6 @@ export function Step1() {
             Name
           </InputLabel>
           <TextField
-            id="outlined-basic"
             type="text"
             placeholder="e.g. Stephen King"
             sx={{ input: { padding: "10px", fontSize: "15px", fontFamily: 'Ubuntu', fontWeight: "500",} }}
@@ -40,7 +39,6 @@ export function Step1() {
             Email Address
           </InputLabel>
           <TextField
-            id="outlined-basic"
             type="email"
             placeholder="e.g. stephenking@lorem.com"
             sx={{ input: { padding: "10px", fontSize: "15px", fontFamily: 'Ubuntu', fontWeight: "500", } }}
@@ -59,7 +57,6 @@ export function Step1() {
             Phone Number
           </InputLabel>
           <TextField
-            id="outlined-basic"
             type="tel"
             placeholder="e.g. +1 234 567 890"
             sx={{ input: { padding: "10px", fontSize: "15px", fontFamily: 'Ubuntu', fontWeight: "500",} }}
