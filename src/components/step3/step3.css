@@ -1,0 +1,13 @@
+.type {
+  font-size: 15px;
+}
+
+.descriptionService {
+  font-size: 12px;
+}
+
+.priceService {
+  font-size: 13px;
+  color: hsl(243, 100%, 62%);
+  font-weight: 500;
+}/*# sourceMappingURL=step3.css.map */

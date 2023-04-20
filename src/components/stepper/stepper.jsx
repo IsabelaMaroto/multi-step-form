@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Step1 } from "../step1/step1";
 import { Step2 } from "../step2/step2";
+import { Step3 } from "../step3/step3";
 
 const steps = ["Your info", "Select plan", " Add-ons", "Summary"];
 
@@ -37,8 +38,6 @@ export default function HorizontalLinearStepper() {
 
   const handleSkip = () => {
     if (!isStepOptional(activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
       throw new Error("You can't skip a step that isn't optional.");
     }
 
@@ -130,8 +129,9 @@ export default function HorizontalLinearStepper() {
             {activeStep === 0 && 
               <Step1 />}
             {activeStep === 1 && 
-              <Step2/>
-            
+              <Step2/>}
+            {activeStep === 2 && 
+              <Step3/>
             }
           </Box>
           <Box

@@ -30,7 +30,7 @@ const plans = [
   },
 ];
 export function Step2() {
-  const [yearly, setYearly] = useState(0);
+  const [yearly, setYearly] = useState(false);
 
   const handleChange = (e) => {
     setYearly(e.target.checked);
@@ -87,7 +87,7 @@ export function Step2() {
                 height: "80px",
 
                 ":hover": {
-                  border: "1px solid hsl(243, 100%, 62%)",
+                  border: "2px solid hsl(243, 100%, 62%)",
                   backgroundColor: "hsl(217, 100%, 97%)",
                 },
               }}
@@ -97,10 +97,10 @@ export function Step2() {
               </Box>
               <Box>
                 <h3>{plano.type}</h3>
-                <p className="price">{yearly ? plano.priceY : plano.priceM}</p>
+                <p className="price">{yearly === true ? plano.priceY : plano.priceM}</p>
                 <p
                   className="yearP"
-                  style={yearly ? { display: "flex" } : { display: "none" }}
+                  style={yearly === true ? { display: "flex" } : { display: "none" }}
                 >
                   2 months free
                 </p>
@@ -120,7 +120,7 @@ export function Step2() {
           <Stack direction="row" spacing={1} alignItems="center">
             <Typography
               sx={
-                yearly
+                yearly === true
                   ? {
                       color: "hsl(231, 11%, 63%)",
                       fontWeight: "700",
@@ -180,7 +180,7 @@ export function Step2() {
             />
             <Typography
               sx={
-                yearly
+                yearly === true
                   ? {
                       color: "hsl(213, 96%, 18%)",
                       fontWeight: "700",
