@@ -140,7 +140,7 @@ export default function HorizontalLinearStepper() {
               flexDirection: "row",
               backgroundColor: "hsl(0, 0%, 100%)",
               position: "absolute",
-              bottom: "0%",
+              bottom: "0px",
               width: "100%",
               padding: "20px",
             }}
