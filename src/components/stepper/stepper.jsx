@@ -14,6 +14,7 @@ const steps = ["Your info", "Select plan", " Add-ons", "Summary"];
 export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
+  const [period, setPeriod] = React.useState(false);
 
   const isStepOptional = (step) => {};
 
@@ -52,6 +53,11 @@ export default function HorizontalLinearStepper() {
   const handleReset = () => {
     setActiveStep(0);
   };
+
+ /*  const typePlan = (data) => {
+    let planPeriod = data
+    console.log(planPeriod)
+  } */
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -129,9 +135,9 @@ export default function HorizontalLinearStepper() {
             {activeStep === 0 && 
               <Step1 />}
             {activeStep === 1 && 
-              <Step2/>}
+              <Step2 setPeriod={setPeriod}/>}
             {activeStep === 2 && 
-              <Step3/>
+              <Step3 period={period}/>
             }
           </Box>
           <Box

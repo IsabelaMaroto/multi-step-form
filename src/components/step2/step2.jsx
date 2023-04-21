@@ -29,11 +29,12 @@ const plans = [
     priceY: "$150/yr",
   },
 ];
-export function Step2() {
+export function Step2({setPeriod}) {
   const [yearly, setYearly] = useState(false);
 
   const handleChange = (e) => {
     setYearly(e.target.checked);
+    setPeriod(e.target.checked)
   };
 
   return (
@@ -137,7 +138,7 @@ export function Step2() {
             </Typography>
             <Switch
               checked={yearly}
-              inputProps={{ "aria-label": "controlled" }}
+              inputProps={{ "false" : "true" }}
               onChange={handleChange}
               sx={{
                 width: "35px",
