@@ -1,5 +1,5 @@
 import FormControl from "@mui/material/FormControl";
-import { Box, Container } from "@mui/material";
+import { Box, Checkbox, Container } from "@mui/material";
 import Switch from "@mui/material/Switch";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
@@ -7,7 +7,7 @@ import imgArcade from "../../assets/images/icon-arcade.svg";
 import imgAdvanced from "../../assets/images/icon-advanced.svg";
 import imgPro from "../../assets/images/icon-pro.svg";
 import "./step2.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const plans = [
   {
@@ -29,12 +29,23 @@ const plans = [
     priceY: "$150/yr",
   },
 ];
-export function Step2({setPeriod}) {
+export function Step2({ setPeriod, setInformation, information }) {
+  const [checked, setChecked] = useState(null);
+  const [style, setStyle] = useState("");
   const [yearly, setYearly] = useState(false);
+
+  const handleChecked = (e) => {
+    if (information.index !== e) {
+      setChecked(e);
+      setStyle("selected");
+      setInformation({ ...information, plan: e });
+    }
+  };
 
   const handleChange = (e) => {
     setYearly(e.target.checked);
-    setPeriod(e.target.checked)
+    setPeriod(e.target.checked);
+    setInformation({ ...information, yearly: e.target.checked });
   };
 
   return (
@@ -78,7 +89,10 @@ export function Step2({setPeriod}) {
         >
           {plans.map((plano, index) => (
             <Box
+              onClick={() => handleChecked(index)}
+              id={index}
               key={index}
+              className={index == information.index ? style : null}
               sx={{
                 display: "flex",
                 border: "1px solid hsl(229, 24%, 87%)",
@@ -87,21 +101,28 @@ export function Step2({setPeriod}) {
                 margin: "5px 0",
                 height: "80px",
 
-                ":hover": {
+                "&.selected": {
                   border: "2px solid hsl(243, 100%, 62%)",
                   backgroundColor: "hsl(217, 100%, 97%)",
                 },
               }}
             >
               <Box sx={{ mr: "15px" }}>
-                <img src={plano.image} />
+                <Checkbox
+                  icon={<img src={plano.image} />}
+                  checked={index == information.index}
+                />
               </Box>
               <Box>
                 <h3>{plano.type}</h3>
-                <p className="price">{yearly === true ? plano.priceY : plano.priceM}</p>
+                <p className="price">
+                  {yearly === true ? plano.priceY : plano.priceM}
+                </p>
                 <p
                   className="yearP"
-                  style={yearly === true ? { display: "flex" } : { display: "none" }}
+                  style={
+                    yearly === true ? { display: "flex" } : { display: "none" }
+                  }
                 >
                   2 months free
                 </p>
@@ -138,44 +159,43 @@ export function Step2({setPeriod}) {
             </Typography>
             <Switch
               checked={yearly}
-              inputProps={{ "false" : "true" }}
+              inputProps={{ false: "true" }}
               onChange={handleChange}
               sx={{
                 width: "35px",
-                height: '20px',
-                padding: '0',
+                height: "20px",
+                padding: "0",
                 display: "flex",
-                '&:active': {
-                  '& .MuiSwitch-thumb': {
-                    width: '15px',
+                "&:active": {
+                  "& .MuiSwitch-thumb": {
+                    width: "15px",
                   },
-                  '& .MuiSwitch-switchBase.Mui-checked': {
-                    transform: 'translateX(10px)',
+                  "& .MuiSwitch-switchBase.Mui-checked": {
+                    transform: "translateX(10px)",
                   },
                 },
                 "& .MuiSwitch-switchBase": {
-                  padding: '4px',
+                  padding: "4px",
                   "&.Mui-checked": {
                     transform: "translateX(13px)",
                     color: "#fff",
                     "& + .MuiSwitch-track": {
-                      opacity: '1',
+                      opacity: "1",
                       backgroundColor: "hsl(213, 96%, 18%)",
                     },
                   },
                 },
-                '& .MuiSwitch-thumb': {
-                  boxShadow: '0 2px 4px 0 rgb(0 35 11 / 20%)',
-                  width: '13px',
-                  height: '13px',
-                  borderRadius: '50px',
-                  
+                "& .MuiSwitch-thumb": {
+                  boxShadow: "0 2px 4px 0 rgb(0 35 11 / 20%)",
+                  width: "13px",
+                  height: "13px",
+                  borderRadius: "50px",
                 },
-                '& .MuiSwitch-track': {
-                  borderRadius: '50px',
-                  opacity: '1',
-                  backgroundColor:"hsl(213, 96%, 18%)",
-                  boxSizing: 'border-box',
+                "& .MuiSwitch-track": {
+                  borderRadius: "50px",
+                  opacity: "1",
+                  backgroundColor: "hsl(213, 96%, 18%)",
+                  boxSizing: "border-box",
                 },
               }}
             />

@@ -27,7 +27,6 @@ export function Step3(period) {
   const [checked, setChecked] = useState([]);
   const [style, setStyle] = useState("");
 
-  console.log(period)
   const handleChecked = (e) => {
 
     // check if the element is already checked
