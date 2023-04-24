@@ -29,7 +29,7 @@ const plans = [
     priceY: "$150/yr",
   },
 ];
-export function Step2({ setPeriod, setInformation, information }) {
+export function Step2({ setInformation, information }) {
   const [checked, setChecked] = useState(null);
   const [style, setStyle] = useState("");
   const [yearly, setYearly] = useState(false);
@@ -43,11 +43,11 @@ export function Step2({ setPeriod, setInformation, information }) {
 
   useEffect(() => {
     setStyle("selected");
+    setYearly(information.yearly)
   })
 
   const handleChange = (e) => {
     setYearly(e.target.checked);
-    setPeriod(e.target.checked);
     setInformation({ ...information, yearly: e.target.checked });
   };
 

@@ -14,13 +14,13 @@ const steps = ["Your info", "Select plan", " Add-ons", "Summary"];
 export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
-  const [period, setPeriod] = React.useState(false);
   const [information, setInformation] = React.useState({
     yearly: false,
     plan: 0,
+    servico: [0,1],
   });
 
-  console.log(information)
+  console.log(information);
 
   const isStepOptional = (step) => {};
 
@@ -59,7 +59,6 @@ export default function HorizontalLinearStepper() {
   const handleReset = () => {
     setActiveStep(0);
   };
-
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -131,16 +130,25 @@ export default function HorizontalLinearStepper() {
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <Box
-           
-          >
-            {activeStep === 0 && 
-              <Step1 setInformation={setInformation} information={information}/>}
-            {activeStep === 1 && 
-              <Step2 setPeriod={setPeriod} setInformation={setInformation} information={information}/>}
-            {activeStep === 2 && 
-              <Step3 period={period}/>
-            }
+          <Box>
+            {activeStep === 0 && (
+              <Step1
+                setInformation={setInformation}
+                information={information}
+              />
+            )}
+            {activeStep === 1 && (
+              <Step2
+                setInformation={setInformation}
+                information={information}
+              />
+            )}
+            {activeStep === 2 && (
+              <Step3
+                setInformation={setInformation}
+                information={information}
+              />
+            )}
           </Box>
           <Box
             sx={{
@@ -176,11 +184,15 @@ export default function HorizontalLinearStepper() {
 
             <Button
               onClick={handleNext}
-             sx={{
-                backgroundColor: `${activeStep === steps.length - 1 ? "hsl(243, 100%, 62%) !important" : "hsl(213, 96%, 18%) !important"}` ,
-                color: "hsl(0, 0%, 100%)", 
+              sx={{
+                backgroundColor: `${
+                  activeStep === steps.length - 1
+                    ? "hsl(243, 100%, 62%) !important"
+                    : "hsl(213, 96%, 18%) !important"
+                }`,
+                color: "hsl(0, 0%, 100%)",
                 textTransform: "capitalize",
-              }} 
+              }}
             >
               {activeStep === steps.length - 1 ? "Confirm" : "Next Step"}
             </Button>

@@ -1,7 +1,7 @@
 import { Checkbox, Container, Box } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import "./step3.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const additional = [
   {
@@ -23,7 +23,7 @@ const additional = [
     priceY:"+$20/yr",
   },
 ];
-export function Step3(period) {
+export function Step3({information, setInformation}) {
   const [checked, setChecked] = useState([]);
   const [style, setStyle] = useState("");
 
@@ -37,13 +37,20 @@ export function Step3(period) {
 
       // uncheck
       setChecked(filteredArray);
+      setInformation({...information, servico:  filteredArray})
     }
     // include element on checked array
     else {
       setChecked([...checked, e]);
       setStyle("hover");
+      setInformation({...information, servico: [...checked, e]})
     }
   };
+
+  useEffect(() => {
+    setChecked(information.servico);
+    setStyle("hover");
+  })
   return (
     <Container
       sx={{
@@ -106,7 +113,7 @@ export function Step3(period) {
               <p className="descriptionService">{service.description}</p>
             </Box>
             <Box>
-              <p className="priceService">{period.period == true ? service.priceY : service.priceM}</p>
+              <p className="priceService">{information.yearly == true ? service.priceY : service.priceM}</p>
             </Box>
           </Box>
         ))}
