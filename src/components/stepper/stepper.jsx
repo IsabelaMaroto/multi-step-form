@@ -17,7 +17,7 @@ export default function HorizontalLinearStepper() {
   const [period, setPeriod] = React.useState(false);
   const [information, setInformation] = React.useState({
     yearly: false,
-    
+    plan: 0,
   });
 
   console.log(information)

@@ -35,12 +35,15 @@ export function Step2({ setPeriod, setInformation, information }) {
   const [yearly, setYearly] = useState(false);
 
   const handleChecked = (e) => {
-    if (information.index !== e) {
+    if (information.plan !== e) {
       setChecked(e);
-      setStyle("selected");
       setInformation({ ...information, plan: e });
     }
   };
+
+  useEffect(() => {
+    setStyle("selected");
+  })
 
   const handleChange = (e) => {
     setYearly(e.target.checked);
@@ -92,7 +95,7 @@ export function Step2({ setPeriod, setInformation, information }) {
               onClick={() => handleChecked(index)}
               id={index}
               key={index}
-              className={index == information.index ? style : null}
+              className={index == information.plan ? style : null}
               sx={{
                 display: "flex",
                 border: "1px solid hsl(229, 24%, 87%)",
@@ -110,7 +113,8 @@ export function Step2({ setPeriod, setInformation, information }) {
               <Box sx={{ mr: "15px" }}>
                 <Checkbox
                   icon={<img src={plano.image} />}
-                  checked={index == information.index}
+                  checkedIcon={<img src={plano.image} />}
+                  checked={index == information.plan}
                 />
               </Box>
               <Box>
