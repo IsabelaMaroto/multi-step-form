@@ -1,26 +1,14 @@
-.container {
+h2 {
+    padding: 0 0 5px;
+}
 
-    position: absolute;
-    top: 34%;
-    left: 50%;
-    transform: translate(-50%, -34%);
-    background-color: hsl(0, 0%, 100%);
-    width: 90%;
-    border-radius: 10px;
-    padding: 20px;
+form {
+    padding: 10px 0;
+}
 
-    h2 {
-        padding: 0 0 5px;
-    }
+.boxInput {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
 
-    form {
-        padding: 10px 0;
-    }
-
-    .boxInput {
-        display: flex;
-        flex-direction: column;
-        padding: 8px 0;
-
-    }
 }

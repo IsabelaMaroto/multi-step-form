@@ -1,5 +1,5 @@
 import '../src/style-app/app.css';
-import HorizontalLinearStepper from './components/stepper/stepper';
+import StepperComponent from './components/stepper/stepper';
 
 function App() {
 
@@ -8,7 +8,7 @@ function App() {
       <div className='background'>
       </div>
       <div>
-        <HorizontalLinearStepper/>
+        <StepperComponent/>
       </div>
     </div>
   )

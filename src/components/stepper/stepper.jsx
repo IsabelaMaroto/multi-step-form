@@ -6,15 +6,15 @@ import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { plans } from "../step2/step2";
-import { additional } from "../step3/step3";
 import { Step1 } from "../step1/step1";
 import { Step2 } from "../step2/step2";
 import { Step3 } from "../step3/step3";
 import { Step4 } from "../step4/step4";
+import { Step5 } from "../step5/step5";
 
 const steps = ["Your info", "Select plan", " Add-ons", "Summary"];
 
-export default function HorizontalLinearStepper() {
+export default function StepperComponent() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const [information, setInformation] = React.useState({
@@ -124,12 +124,33 @@ export default function HorizontalLinearStepper() {
 
       {activeStep === steps.length ? (
         <React.Fragment>
-          <Typography sx={{ mt: 2, mb: 1 }}>
-            All steps completed - you&apos;re finished
-          </Typography>
-          <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-            <Box sx={{ flex: "1 1 auto" }} />
-            <Button onClick={handleReset}>Reset</Button>
+          <Box>
+            <Step5/>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-end",
+              backgroundColor: "hsl(0, 0%, 100%)",
+              position: "absolute",
+              bottom: "0px",
+              width: "100%",
+              padding: "20px",
+            }}
+          >
+            <Button
+              onClick={handleReset}
+              sx={{
+                backgroundColor: `${
+                  activeStep === steps.length - 1
+                    ? "hsl(243, 100%, 62%) !important"
+                    : "hsl(213, 96%, 18%) !important"
+                }`,
+                color: "hsl(0, 0%, 100%)",
+                textTransform: "capitalize",
+              }}
+            >Start again</Button>
           </Box>
         </React.Fragment>
       ) : (
@@ -202,6 +223,7 @@ export default function HorizontalLinearStepper() {
                 }`,
                 color: "hsl(0, 0%, 100%)",
                 textTransform: "capitalize",
+                minWidth:"81px"
               }}
             >
               {activeStep === steps.length - 1 ? "Confirm" : "Next Step"}
