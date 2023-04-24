@@ -1,0 +1,29 @@
+.plan{
+    font-size: 16px;
+    font-weight: 500;
+
+    span{
+        padding: 0 5px;
+    }
+}
+.change{
+    font-size: 15px;
+    text-decoration: underline 2px;
+}
+.pricePlan{
+    font-size: 10px;
+}
+.serviceType , .totalLabel{
+    color:hsl(231, 11%, 63%);
+    font-weight: 400;
+    font-size: 15px;
+    padding: 5px 0;
+}
+.servicePrice{
+    font-size: 15px;
+    color: hsl(213, 96%, 18%);
+    font-weight: 500;
+}
+.precoTotal{
+    color:  hsl(243, 100%, 62%);
+}

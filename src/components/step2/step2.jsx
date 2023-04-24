@@ -9,24 +9,24 @@ import imgPro from "../../assets/images/icon-pro.svg";
 import "./step2.css";
 import { useEffect, useState } from "react";
 
-const plans = [
+export const plans = [
   {
     image: imgArcade,
     type: "Arcade",
-    priceM: " $9/mo",
-    priceY: "$90/yr",
+    priceM: 9,
+    priceY: 90,
   },
   {
     image: imgAdvanced,
     type: "Advanced",
-    priceM: "$12/mo",
-    priceY: "$120/yr",
+    priceM: 12,
+    priceY: 120,
   },
   {
     image: imgPro,
     type: "Pro",
-    priceM: "$15/mo",
-    priceY: "$150/yr",
+    priceM: 15,
+    priceY: 150,
   },
 ];
 export function Step2({ setInformation, information }) {
@@ -34,10 +34,10 @@ export function Step2({ setInformation, information }) {
   const [style, setStyle] = useState("");
   const [yearly, setYearly] = useState(false);
 
-  const handleChecked = (e) => {
+  const handleChecked = (e, plan) => {
     if (information.plan !== e) {
       setChecked(e);
-      setInformation({ ...information, plan: e });
+      setInformation({ ...information, plan: plan, indexPlan: e});
     }
   };
 
@@ -90,12 +90,12 @@ export function Step2({ setInformation, information }) {
             height: "100%",
           }}
         >
-          {plans.map((plano, index) => (
+          {plans.map((plan, index) => (
             <Box
-              onClick={() => handleChecked(index)}
+              onClick={() => handleChecked(index, plan)}
               id={index}
               key={index}
-              className={index == information.plan ? style : null}
+              className={index == information.indexPlan ? style : null}
               sx={{
                 display: "flex",
                 border: "1px solid hsl(229, 24%, 87%)",
@@ -112,15 +112,15 @@ export function Step2({ setInformation, information }) {
             >
               <Box sx={{ mr: "15px" }}>
                 <Checkbox
-                  icon={<img src={plano.image} />}
-                  checkedIcon={<img src={plano.image} />}
+                  icon={<img src={plan.image} />}
+                  checkedIcon={<img src={plan.image} />}
                   checked={index == information.plan}
                 />
               </Box>
               <Box>
-                <h3>{plano.type}</h3>
+                <h3>{plan.type}</h3>
                 <p className="price">
-                  {yearly === true ? plano.priceY : plano.priceM}
+                ${yearly === true ? (plan.priceY + "/yr") : (plan.priceM + "/mo")}
                 </p>
                 <p
                   className="yearP"

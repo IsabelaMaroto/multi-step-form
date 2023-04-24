@@ -3,52 +3,53 @@ import FormControl from "@mui/material/FormControl";
 import "./step3.css";
 import { useState, useEffect } from "react";
 
-const additional = [
+export const additional = [
   {
     type: "Online service",
     description: "Access to multiplayer games",
-    priceM: "+$1/mo",
-    priceY:"+$10/yr",
+    priceM: 1,
+    priceY:10,
+    id: 0,
   },
   {
     type: "Larger storage",
     description: "Extra 1TB of cloud save",
-    priceM: "+$2/mo",
-    priceY:"+$20/yr",
+    priceM: 2,
+    priceY:20,
+    id: 1,
   },
   {
     type: "Customizable profile",
     description: "Custom theme on your profile",
-    priceM: "+$2/mo",
-    priceY:"+$20/yr",
+    priceM: 2,
+    priceY:20,
+    id: 2,
   },
 ];
 export function Step3({information, setInformation}) {
   const [checked, setChecked] = useState([]);
   const [style, setStyle] = useState("");
 
-  const handleChecked = (e) => {
-
+  const handleChecked = (e, service) => {
     // check if the element is already checked
     if (checked.length > 0 && checked.includes(e)) {
       const filteredArray = checked.filter((el) => {
         return el != e;
       });
-
       // uncheck
       setChecked(filteredArray);
-      setInformation({...information, servico:  filteredArray})
+      setInformation({...information, service:  filteredArray})
     }
     // include element on checked array
     else {
       setChecked([...checked, e]);
       setStyle("hover");
-      setInformation({...information, servico: [...checked, e]})
+      setInformation({...information, service: [...checked, e]}) 
     }
   };
 
   useEffect(() => {
-    setChecked(information.servico);
+    setChecked(information.service);
     setStyle("hover");
   })
   return (
@@ -78,7 +79,7 @@ export function Step3({information, setInformation}) {
       >
         {additional.map((service, index) => (
           <Box
-            onClick={() => handleChecked(index)}
+            onClick={() => handleChecked(index, service)}
             key={index}
             id={index}
             className={
@@ -113,7 +114,7 @@ export function Step3({information, setInformation}) {
               <p className="descriptionService">{service.description}</p>
             </Box>
             <Box>
-              <p className="priceService">{information.yearly == true ? service.priceY : service.priceM}</p>
+              <p className="priceService">+${information.yearly == true ? (service.priceY + "/yr") : (service.priceM + "/mo")}</p>
             </Box>
           </Box>
         ))}

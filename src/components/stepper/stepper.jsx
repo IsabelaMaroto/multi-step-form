@@ -5,9 +5,12 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { plans } from "../step2/step2";
+import { additional } from "../step3/step3";
 import { Step1 } from "../step1/step1";
 import { Step2 } from "../step2/step2";
 import { Step3 } from "../step3/step3";
+import { Step4 } from "../step4/step4";
 
 const steps = ["Your info", "Select plan", " Add-ons", "Summary"];
 
@@ -16,8 +19,9 @@ export default function HorizontalLinearStepper() {
   const [skipped, setSkipped] = React.useState(new Set());
   const [information, setInformation] = React.useState({
     yearly: false,
-    plan: 0,
-    servico: [0,1],
+    indexPlan: 0,
+    plan: plans[0],
+    service: [0,1],
   });
 
   console.log(information);
@@ -145,6 +149,12 @@ export default function HorizontalLinearStepper() {
             )}
             {activeStep === 2 && (
               <Step3
+                setInformation={setInformation}
+                information={information}
+              />
+            )}
+            {activeStep === 3 && (
+              <Step4
                 setInformation={setInformation}
                 information={information}
               />
