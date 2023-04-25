@@ -53,18 +53,16 @@ export function Step2({ setInformation, information }) {
 
   return (
     <Container
-      sx={{
-        position: "absolute",
-        top: "97px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        backgroundColor: "hsl(0, 0%, 100%)",
-        width: "90%",
-        borderRadius: "10px",
-        padding: "20px",
-        bottom: "90px",
-        overflow: "hidden",
-      }}
+    sx={{
+      position: {xs: "absolute", md: "unset"},
+      top: {xs:"97px", md: "unset"},
+      left: {xs:"50%", md: "unset"},
+      transform: {xs:"translateX(-50%)", md: "unset"},
+      backgroundColor: "hsl(0, 0%, 100%)",
+      width: {xs:"90%"},
+      borderRadius: "10px",
+      padding: "20px",
+    }}
     >
       <Box>
         <h2 className="title">Select your plan</h2>

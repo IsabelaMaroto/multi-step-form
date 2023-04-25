@@ -7,12 +7,12 @@ export function Step1({ setInformation, information }) {
   return (
     <Container
       sx={{
-        position: "absolute",
-        top: "97px",
-        left: "50%",
-        transform: "translateX(-50%)",
+        position: {xs: "absolute", md: "unset"},
+        top: {xs:"97px", md: "unset"},
+        left: {xs:"50%", md: "unset"},
+        transform: {xs:"translateX(-50%)", md: "unset"},
         backgroundColor: "hsl(0, 0%, 100%)",
-        width: "90%",
+        width: {xs:"90%"},
         borderRadius: "10px",
         padding: "20px",
       }}

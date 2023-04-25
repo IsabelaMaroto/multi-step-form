@@ -6,13 +6,25 @@ import imageMobile from "./assets/images/bg-sidebar-mobile.svg";
 
 function App() {
   return (
-    <Box 
-    display={{ sm: "block", md: "flex" }} 
-    sx={{
-      padding:{md:"20px"},
-      height: {md:"100vh"},
-      justifyContent: {md:"center"}
-    }}>
+    <Box
+      className="App"
+      display={{ sm: "block", md: "flex" }}
+      sx={{
+        padding: { md: "20px" },
+        height: { md: "100vh" },
+        justifyContent: { md: "center" },
+        backgroundColor: {
+          sm: "hsl(217, 100%, 97%)",
+          md: "hsl(0, 0%, 100%)",
+        },
+        sm: {
+          minHeight: "667px",
+          height: "100vh",
+          width: "100%",
+          fontFamily: "Ubuntu",
+        },
+      }}
+    >
       <Box
         className="background"
         sx={{
@@ -22,25 +34,20 @@ function App() {
           },
           height: { sm: "172px", md: "unset" },
           width: { sm: "100%", md: "400px" },
-          minWidth:{md:"400px"},
+          minWidth: { md: "400px" },
           backgroundSize: { sm: "cover", md: "contain" },
           backgroundRepeat: "no-repeat",
         }}
       />
       <Box
-        className="App"
         sx={{
-          position: "relative",
-          backgroundColor: {sm: "hsl(217, 100%, 97%)", md: "hsl(0, 0%, 100%)"},
-          minHeight: "667px",
-          height: "100%",
-          width: "100%",
-          fontFamily: "Ubuntu",
+          flex: "1",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: {md: "center"},
         }}
       >
-        <Box>
-          <StepperComponent />
-        </Box>
+        <StepperComponent />
       </Box>
     </Box>
   );

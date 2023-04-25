@@ -21,7 +21,7 @@ export default function StepperComponent() {
     yearly: false,
     indexPlan: 0,
     plan: plans[0],
-    service: [0,1],
+    service: [0, 1],
   });
 
   const isStepOptional = (step) => {};
@@ -63,177 +63,268 @@ export default function StepperComponent() {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box
-        sx={{
-          position: "absolute",
-          top: "3%",
-          left: "50%",
-          transform: "translate(-50%, -3%)",
-        }}
-      >
-        <Stepper
-          activeStep={activeStep}
+    <Box sx={{ xs: { width: "100%" }, md: { display: "flex" } }}>
+      <Box>
+        <Box
+          display={{ xs: "block", md: "none" }}
           sx={{
-            height: "60px",
-            div: {
-              paddingRight: "unset",
-            },
-
-            svg: {
-              color: "rgba(0, 0, 0, 0)",
-              border: "2px solid hsl(0, 0%, 100%)",
-              borderRadius: "50%",
-              fontSize: "2rem",
-            },
-            ".css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active": {
-              color: "hsl(228, 100%, 84%)",
-              border: "unset",
-
-              ".css-117w1su-MuiStepIcon-text": {
-                fill: "hsl(0, 0%, 0%)",
-              },
-            },
-            ".css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed": {
-              path: {},
-            },
+            position: "absolute",
+            top: "3%",
+            left: "50%",
+            transform: "translate(-50%, -3%)",
           }}
-          connector={false}
         >
-          {steps.map((label, index) => {
-            const stepProps = { completed: false };
-            const labelProps = {};
-            if (isStepOptional(index)) {
-              labelProps.optional = (
-                <Typography variant="caption">Optional</Typography>
+          <Stepper
+            activeStep={activeStep}
+            sx={{
+              height: "60px",
+              div: {
+                paddingRight: "unset",
+              },
+
+              svg: {
+                color: "rgba(0, 0, 0, 0)",
+                border: "2px solid hsl(0, 0%, 100%)",
+                borderRadius: "50%",
+                fontSize: "2rem",
+              },
+              ".css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active": {
+                color: "hsl(228, 100%, 84%)",
+                border: "unset",
+
+                ".css-117w1su-MuiStepIcon-text": {
+                  fill: "hsl(0, 0%, 0%)",
+                },
+              },
+              ".css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed": {
+                path: {},
+              },
+            }}
+            connector={false}
+          >
+            {steps.map((label, index) => {
+              const stepProps = { completed: false };
+              const labelProps = {};
+              if (isStepOptional(index)) {
+                labelProps.optional = (
+                  <Typography variant="caption">Optional</Typography>
+                );
+              }
+              if (isStepSkipped(index)) {
+                stepProps.completed = false;
+              }
+              return (
+                <Step key={label} {...stepProps}>
+                  <StepLabel {...labelProps}></StepLabel>
+                </Step>
               );
-            }
-            if (isStepSkipped(index)) {
-              stepProps.completed = false;
-            }
-            return (
-              <Step key={label} {...stepProps}>
-                <StepLabel {...labelProps}></StepLabel>
-              </Step>
-            );
-          })}
-        </Stepper>
+            })}
+          </Stepper>
+        </Box>
+
+        <Box
+          display={{ xs: "none", md: "block" }}
+          sx={{
+            maxWidth: 400,
+            position: "absolute",
+            left: "60px",
+            top: "50px",
+          }}
+        >
+          <Stepper
+            activeStep={activeStep}
+            orientation="vertical"
+            sx={{
+              height: "60px",
+              div: {
+                paddingRight: "unset",
+              },
+
+              svg: {
+                color: "rgba(0, 0, 0, 0)",
+                border: "2px solid hsl(0, 0%, 100%)",
+                borderRadius: "50%",
+                fontSize: "2rem",
+              },
+              ".css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active": {
+                color: "hsl(228, 100%, 84%)",
+                border: "unset",
+
+                ".css-117w1su-MuiStepIcon-text": {
+                  fill: "hsl(0, 0%, 0%)",
+                },
+              },
+              ".css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed": {
+                path: {},
+              },
+            }}
+            connector={false}
+          >
+            {steps.map((label, index) => {
+              const stepProps = { completed: false };
+              const labelProps = {};
+              if (isStepOptional(index)) {
+                labelProps.optional = (
+                  <Typography variant="caption">Optional</Typography>
+                );
+              }
+              if (isStepSkipped(index)) {
+                stepProps.completed = false;
+              }
+              return (
+                <Step key={label} {...stepProps}>
+                  <StepLabel {...labelProps} sx={{ padding: "20px 0" }}>
+                    <Box sx={{ margin: "0 10px" }}>
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          color: "hsl(228, 100%, 84%)",
+                          textTransform: "uppercase",
+                          fontFamily: "Ubuntu",
+                        }}
+                      >
+                        Step {index + 1}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          color: "hsl(0, 0%, 100%)",
+                          textTransform: "uppercase",
+                          fontWeight: "700",
+                          letterSpacing: "1.7px",
+                          fontFamily: "Ubuntu",
+                        }}
+                      >
+                        {label}
+                      </Typography>
+                    </Box>
+                  </StepLabel>
+                </Step>
+              );
+            })}
+          </Stepper>
+        </Box>
       </Box>
 
-      {activeStep === steps.length ? (
-        <React.Fragment>
-          <Box>
-            <Step5/>
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-end",
-              backgroundColor: "hsl(0, 0%, 100%)",
-              position: "absolute",
-              bottom: "0px",
-              width: "100%",
-              padding: "20px",
-            }}
-          >
-            <Button
-              onClick={handleReset}
+      <Box sx={{ md: { display: "block" } }}>
+        {activeStep === steps.length ? (
+          <React.Fragment>
+            <Box>
+              <Step5 />
+            </Box>
+            <Box
               sx={{
-                backgroundColor: `${
-                  activeStep === steps.length - 1
-                    ? "hsl(243, 100%, 62%) !important"
-                    : "hsl(213, 96%, 18%) !important"
-                }`,
-                color: "hsl(0, 0%, 100%)",
-                textTransform: "capitalize",
-              }}
-            >Start again</Button>
-          </Box>
-        </React.Fragment>
-      ) : (
-        <React.Fragment>
-          <Box>
-            {activeStep === 0 && (
-              <Step1
-                setInformation={setInformation}
-                information={information}
-              />
-            )}
-            {activeStep === 1 && (
-              <Step2
-                setInformation={setInformation}
-                information={information}
-              />
-            )}
-            {activeStep === 2 && (
-              <Step3
-                setInformation={setInformation}
-                information={information}
-              />
-            )}
-            {activeStep === 3 && (
-              <Step4
-                setInformation={setInformation}
-                information={information}
-              />
-            )}
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              backgroundColor: "hsl(0, 0%, 100%)",
-              position: "absolute",
-              bottom: "0px",
-              width: "100%",
-              padding: "20px",
-            }}
-          >
-            {activeStep != 0 ? (
-              <Button
-                color="inherit"
-                onClick={handleBack}
-                sx={{
-                  mr: 1,
-                  textTransform: "capitalize",
-                  color: "hsl(231, 11%, 63%)",
-                  
-
-                  ":hover":{
-                    color: "hsl(213, 96%, 18%)",
-                  }
-                }}
-              >
-                Go Back
-              </Button>
-            ) : null}
-
-            <Box sx={{ flex: "1 1 auto" }} />
-            {isStepOptional(activeStep) && (
-              <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                Skip
-              </Button>
-            )}
-
-            <Button
-              onClick={handleNext}
-              sx={{
-                backgroundColor: `${
-                  activeStep === steps.length - 1
-                    ? "hsl(243, 100%, 62%) !important"
-                    : "hsl(213, 96%, 18%) !important"
-                }`,
-                color: "hsl(0, 0%, 100%)",
-                textTransform: "capitalize",
-                minWidth:"81px"
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                backgroundColor: "hsl(0, 0%, 100%)",
+                position: { xs: "absolute", md: "unset" },
+                bottom: "0px",
+                width: "100%",
+                padding: "20px",
               }}
             >
-              {activeStep === steps.length - 1 ? "Confirm" : "Next Step"}
-            </Button>
-          </Box>
-        </React.Fragment>
-      )}
+              <Button
+                onClick={handleReset}
+                sx={{
+                  backgroundColor: `${
+                    activeStep === steps.length - 1
+                      ? "hsl(243, 100%, 62%) !important"
+                      : "hsl(213, 96%, 18%) !important"
+                  }`,
+                  color: "hsl(0, 0%, 100%)",
+                  textTransform: "capitalize",
+                }}
+              >
+                Start again
+              </Button>
+            </Box>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <Box>
+              <Box>
+                {activeStep === 0 && (
+                  <Step1
+                    setInformation={setInformation}
+                    information={information}
+                  />
+                )}
+                {activeStep === 1 && (
+                  <Step2
+                    setInformation={setInformation}
+                    information={information}
+                  />
+                )}
+                {activeStep === 2 && (
+                  <Step3
+                    setInformation={setInformation}
+                    information={information}
+                  />
+                )}
+                {activeStep === 3 && (
+                  <Step4
+                    setInformation={setInformation}
+                    information={information}
+                  />
+                )}
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  backgroundColor: "hsl(0, 0%, 100%)",
+                  position: { xs: "absolute", md: "unset" },
+                  bottom: { xs: "0px" },
+                  width: { xs: "100%", md: "100%" },
+                  padding: "20px",
+                  right: { md: "0px" },
+                }}
+              >
+                {activeStep != 0 ? (
+                  <Button
+                    color="inherit"
+                    onClick={handleBack}
+                    sx={{
+                      mr: 1,
+                      textTransform: "capitalize",
+                      color: "hsl(231, 11%, 63%)",
+
+                      ":hover": {
+                        color: "hsl(213, 96%, 18%)",
+                      },
+                    }}
+                  >
+                    Go Back
+                  </Button>
+                ) : null}
+
+                <Box sx={{ flex: "1 1 auto" }} />
+                {isStepOptional(activeStep) && (
+                  <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
+                    Skip
+                  </Button>
+                )}
+
+                <Button
+                  onClick={handleNext}
+                  sx={{
+                    backgroundColor: `${
+                      activeStep === steps.length - 1
+                        ? "hsl(243, 100%, 62%) !important"
+                        : "hsl(213, 96%, 18%) !important"
+                    }`,
+                    color: "hsl(0, 0%, 100%)",
+                    textTransform: "capitalize",
+                    minWidth: "81px",
+                  }}
+                >
+                  {activeStep === steps.length - 1 ? "Confirm" : "Next Step"}
+                </Button>
+              </Box>
+            </Box>
+          </React.Fragment>
+        )}
+      </Box>
     </Box>
   );
 }
