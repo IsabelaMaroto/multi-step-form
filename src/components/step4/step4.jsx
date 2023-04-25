@@ -56,7 +56,7 @@ export function Step4({ information, setInformation }) {
             <p className="change">Change</p>
           </Box>
           <Box sx={{ display:"flex", alignItems:"center"}}>
-            <h3 classname="pricePlan">
+            <h3 className="priceTotalPlan">
               $
               {information.yearly == true
                 ? information.plan.priceY + "/yr"
@@ -82,7 +82,7 @@ export function Step4({ information, setInformation }) {
           ))}
         </Box>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between", padding:"0 15px" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", padding:"0 15px", alignItems: "center" }}>
         <h5 className="totalLabel">
           {information.yearly == true
             ? "Total (per year)"

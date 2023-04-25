@@ -24,8 +24,6 @@ export default function StepperComponent() {
     service: [0,1],
   });
 
-  console.log(information);
-
   const isStepOptional = (step) => {};
 
   const isStepSkipped = (step) => {
@@ -200,6 +198,11 @@ export default function StepperComponent() {
                   mr: 1,
                   textTransform: "capitalize",
                   color: "hsl(231, 11%, 63%)",
+                  
+
+                  ":hover":{
+                    color: "hsl(213, 96%, 18%)",
+                  }
                 }}
               >
                 Go Back

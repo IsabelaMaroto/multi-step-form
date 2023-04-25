@@ -14,7 +14,7 @@ export function Step1({ setInformation, information }) {
         backgroundColor: "hsl(0, 0%, 100%)",
         width: "90%",
         borderRadius: "10px",
-        padding: "50px 20px",
+        padding: "20px",
       }}
     >
       <h2>Personal info</h2>
@@ -36,17 +36,26 @@ export function Step1({ setInformation, information }) {
             type="text"
             placeholder="e.g. Stephen King"
             sx={{
+              "& .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root":{
+                borderRadius:"6px",
+              },
+              ".css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":{
+                border:"1px solid hsl(243, 100%, 62%)"
+              },
               input: {
                 padding: "10px",
                 fontSize: "15px",
                 fontFamily: "Ubuntu",
                 fontWeight: "500",
+                cursor:"pointer",
+                
               },
             }}
             onChange={(e) =>
               setInformation({ ...information, name: e.target.value })
             }
             value={information.name ? information.name : ""}
+            variant="outlined"
           ></TextField>
         </Box>
         <Box className="boxInput">
@@ -65,17 +74,26 @@ export function Step1({ setInformation, information }) {
             type="email"
             placeholder="e.g. stephenking@lorem.com"
             sx={{
+              "& .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root":{
+                borderRadius:"6px",
+              },
+              ".css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":{
+                border:"1px solid hsl(243, 100%, 62%)"
+              },
               input: {
                 padding: "10px",
                 fontSize: "15px",
                 fontFamily: "Ubuntu",
                 fontWeight: "500",
+                cursor: "pointer",
+                
               },
             }}
             onChange={(e) =>
               setInformation({ ...information, email: e.target.value })
             }
             value={information.email ? information.email : ""}
+            variant="outlined"
           ></TextField>
         </Box>
         <Box className="boxInput">
@@ -94,18 +112,26 @@ export function Step1({ setInformation, information }) {
             type="tel"
             placeholder="e.g. +1 234 567 890"
             sx={{
+              "& .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root":{
+                borderRadius:"6px",
+              },
               input: {
                 padding: "10px",
                 fontSize: "15px",
                 fontFamily: "Ubuntu",
                 fontWeight: "500",
+                cursor: "pointer",
+              },
+              ".css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":{
+                border:"1px solid hsl(243, 100%, 62%)"
               },
             }}
             onChange={(e) =>
               setInformation({ ...information, tel: e.target.value })
             }
             value={information.tel ? information.tel : ""}
-            required
+            variant="outlined"
+            helperText="This field is required"
           ></TextField>
         </Box>
       </form>

@@ -108,6 +108,11 @@ export function Step2({ setInformation, information }) {
                   border: "2px solid hsl(243, 100%, 62%)",
                   backgroundColor: "hsl(217, 100%, 97%)",
                 },
+
+                ":hover":{
+                  border: "2px solid hsl(243, 100%, 62%)",
+                  cursor: "pointer",
+                }
               }}
             >
               <Box sx={{ mr: "15px" }}>
