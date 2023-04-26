@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import imgArcade from "../../assets/images/icon-arcade.svg";
 import imgAdvanced from "../../assets/images/icon-advanced.svg";
 import imgPro from "../../assets/images/icon-pro.svg";
-import "./step2.css";
 import { useEffect, useState } from "react";
 
 export const plans = [
@@ -37,14 +36,14 @@ export function Step2({ setInformation, information }) {
   const handleChecked = (e, plan) => {
     if (information.plan !== e) {
       setChecked(e);
-      setInformation({ ...information, plan: plan, indexPlan: e});
+      setInformation({ ...information, plan: plan, indexPlan: e });
     }
   };
 
   useEffect(() => {
     setStyle("selected");
-    setYearly(information.yearly)
-  })
+    setYearly(information.yearly);
+  });
 
   const handleChange = (e) => {
     setYearly(e.target.checked);
@@ -52,40 +51,28 @@ export function Step2({ setInformation, information }) {
   };
 
   return (
-    <Container
-    sx={{
-      position: {xs: "absolute", md: "unset"},
-      top: {xs:"97px", md: "unset"},
-      left: {xs:"50%", md: "unset"},
-      transform: {xs:"translateX(-50%)", md: "unset"},
-      backgroundColor: "hsl(0, 0%, 100%)",
-      width: {xs:"90%"},
-      borderRadius: "10px",
-      padding: "20px",
-    }}
-    >
+    <Container>
       <Box>
-        <h2 className="title">Select your plan</h2>
-        <p className="description">
-          You have the option of monthly or yearly billing.
-        </p>
+        <h2>Select your plan</h2>
+        <h6>You have the option of monthly or yearly billing.</h6>
       </Box>
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          height: "350px",
+          height: { xs: "350px", md: "auto" },
         }}
       >
         <FormControl
           sx={{
             width: "100%",
-            padding: "10px 0",
+            padding: { xs: "10px 0", md: "40px 0" },
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
+            flexDirection: { xs: "column", md: "row" },
+            justifyContent: { xs: "center", md: "space-between" },
             height: "100%",
+            alignItems: "center",
           }}
         >
           {plans.map((plan, index) => (
@@ -96,21 +83,26 @@ export function Step2({ setInformation, information }) {
               className={index == information.indexPlan ? style : null}
               sx={{
                 display: "flex",
+                flexDirection: { xs: "row", md: "column" },
+                justifyContent: { xs: "left", md: "space-between" },
                 border: "1px solid hsl(229, 24%, 87%)",
                 borderRadius: "8px",
-                padding: "10px 15px",
-                margin: "5px 0",
-                height: "80px",
+                padding: { xs: "10px 15px", md: "10px 5px" },
+                margin: { xs: "5px 0", md: "5px 10px" },
+                height: { xs: "80px", md: "100%" },
+                width: { xs: "100%", md: "100%" },
+                maxWidth: { md: "180px" },
+                minHeight: { md: "220px" },
 
                 "&.selected": {
                   border: "2px solid hsl(243, 100%, 62%)",
                   backgroundColor: "hsl(217, 100%, 97%)",
                 },
 
-                ":hover":{
+                ":hover": {
                   border: "2px solid hsl(243, 100%, 62%)",
                   cursor: "pointer",
-                }
+                },
               }}
             >
               <Box sx={{ mr: "15px" }}>
@@ -120,11 +112,28 @@ export function Step2({ setInformation, information }) {
                   checked={index == information.plan}
                 />
               </Box>
-              <Box>
+              <Box
+                sx={{
+                  padding: { md: "0 0 0 10px" },
+                  h3: {
+                    fontSize: "16px",
+                    fontWeight: "900",
+                    color: "hsl(213, 96%, 18%)",
+                  },
+                  h6: {
+                    fontSize: "16px",
+                  },
+                  "& .yearP": {
+                    fontSize: "12px",
+                    fontWeight: "500",
+                    color: "hsl(213, 96%, 18%)",
+                  },
+                }}
+              >
                 <h3>{plan.type}</h3>
-                <p className="price">
-                ${yearly === true ? (plan.priceY + "/yr") : (plan.priceM + "/mo")}
-                </p>
+                <h6>
+                  ${yearly === true ? plan.priceY + "/yr" : plan.priceM + "/mo"}
+                </h6>
                 <p
                   className="yearP"
                   style={
@@ -144,6 +153,7 @@ export function Step2({ setInformation, information }) {
             backgroundColor: "hsl(217, 100%, 97%)",
             borderRadius: "8px",
             padding: "12px",
+            marginBottom:"15px",
           }}
         >
           <Stack direction="row" spacing={1} alignItems="center">

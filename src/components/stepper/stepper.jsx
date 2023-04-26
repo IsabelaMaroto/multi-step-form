@@ -208,41 +208,70 @@ export default function StepperComponent() {
       <Box sx={{ md: { display: "block" } }}>
         {activeStep === steps.length ? (
           <React.Fragment>
-            <Box>
-              <Step5 />
-            </Box>
             <Box
               sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "flex-end",
-                backgroundColor: "hsl(0, 0%, 100%)",
-                position: { xs: "absolute", md: "unset" },
-                bottom: "0px",
-                width: "100%",
-                padding: "20px",
+                display: { md: "flex" },
+                justifyContent: { md: "space-between" },
+                flexDirection: { md: "column" },
+                minHeight: { md: "700px" },
               }}
             >
-              <Button
-                onClick={handleReset}
+              <Box sx={{ padding: { xs: "20px 0px", md: "40px 0px 20px" }, height:{md:"500px"}, display:"flex", alignItems:{md:"end"}}}>
+                <Step5 />
+              </Box>
+              <Box
                 sx={{
-                  backgroundColor: `${
-                    activeStep === steps.length - 1
-                      ? "hsl(243, 100%, 62%) !important"
-                      : "hsl(213, 96%, 18%) !important"
-                  }`,
-                  color: "hsl(0, 0%, 100%)",
-                  textTransform: "capitalize",
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent:"right",
+                  backgroundColor: "hsl(0, 0%, 100%)",
+                  position: { xs: "absolute", md: "unset" },
+                  bottom: { xs: "0px" },
+                  width: { xs: "100%", md: "100%" },
+                  padding: { xs: "20px", md: "20px" },
+                  right: { md: "0px" },
                 }}
               >
-                Start again
-              </Button>
+                <Button
+                  onClick={handleReset}
+                  sx={{
+                    backgroundColor: `${
+                      activeStep === steps.length - 1
+                        ? "hsl(243, 100%, 62%) !important"
+                        : "hsl(213, 96%, 18%) !important"
+                    }`,
+                    color: "hsl(0, 0%, 100%)",
+                    textTransform: "capitalize",
+                  }}
+                >
+                  Start again
+                </Button>
+              </Box>
             </Box>
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <Box>
-              <Box>
+            <Box
+              sx={{
+                display: { md: "flex" },
+                justifyContent: { md: "space-between" },
+                flexDirection: { md: "column" },
+                minHeight: { md: "700px" },
+              }}
+            >
+              <Box
+                sx={{
+                  position: { xs: "absolute", md: "unset" },
+                  top: { xs: "97px", md: "unset" },
+                  left: { xs: "50%", md: "unset" },
+                  transform: { xs: "translateX(-50%)", md: "unset" },
+                  backgroundColor: "hsl(0, 0%, 100%)",
+                  width: { xs: "90%", md: "100%" },
+                  minWidth: { lg: "580px" },
+                  borderRadius: "10px",
+                  padding: { xs: "20px 0px", md: "40px 0px 20px" },
+                }}
+              >
                 {activeStep === 0 && (
                   <Step1
                     setInformation={setInformation}
@@ -276,7 +305,7 @@ export default function StepperComponent() {
                   position: { xs: "absolute", md: "unset" },
                   bottom: { xs: "0px" },
                   width: { xs: "100%", md: "100%" },
-                  padding: "20px",
+                  padding: { xs: "20px", md: "20px" },
                   right: { md: "0px" },
                 }}
               >
@@ -285,6 +314,8 @@ export default function StepperComponent() {
                     color="inherit"
                     onClick={handleBack}
                     sx={{
+                      fontSize: { md: "16px" },
+                      fontWeight: "500",
                       mr: 1,
                       textTransform: "capitalize",
                       color: "hsl(231, 11%, 63%)",
@@ -315,7 +346,9 @@ export default function StepperComponent() {
                     }`,
                     color: "hsl(0, 0%, 100%)",
                     textTransform: "capitalize",
-                    minWidth: "81px",
+                    borderRadius: { xs: "4px", md: "7px" },
+                    minWidth: { xs: "81px", md: "110px" },
+                    padding: { xs: " 8px 15px", md: "10px 15px" },
                   }}
                 >
                   {activeStep === steps.length - 1 ? "Confirm" : "Next Step"}

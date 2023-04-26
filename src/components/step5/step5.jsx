@@ -37,15 +37,20 @@ export function Step5() {
 
         "& .thanks":{
             padding:"10px 0"
-        }
+        },
+
+        h6:{
+          maxWidth: {md: "550px"},
+        },
+
       }}
       >
         <h2 className="thanks">Thank you!</h2>
-        <p className="thanksDescription">
+        <h6 className="thanksDescription">
           Thanks for confirming your subscription! We hope you have fun using
           our platform. If you ever need support, please feel free to email us
           at support@loremgaming.com.
-        </p>
+        </h6>
       </Box>
     </Container>
   );
